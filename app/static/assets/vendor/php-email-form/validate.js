@@ -56,37 +56,49 @@
   });
 
   async function php_email_form_submit(thisForm, action, formData) {
-    await fetch(action, {
-      method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
-    })
-    .then(response => {
-      if( response.ok ) {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
-        // return response.text();
-      } else {
-        const data = await response.json();
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
+      })
+
+      const data = await response.json();
+      if (!response.ok) {
+              throw new Error(
+                  data.message ||
+                  'Form submission failed.'
+              );
+          }
+          // Hide loading
+      const loading =
+          thisForm.querySelector('.loading');
+
+      if (loading) {
+          loading.classList.remove('d-block');
       }
-    })
-    // .then(data => {
-    //   thisForm.querySelector('.loading').classList.remove('d-block');
-    //   if (data.trim() == 'OK') {
-    //     thisForm.querySelector('.sent-message').classList.add('d-block');
-    //     thisForm.reset(); 
-    //   } else {
-    //     throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
-    //   }
-    // })
-    .catch((error) => {
+
+      //display success
+       const sentMessage =
+            thisForm.querySelector('.sent-message');
+
+      if (sentMessage) {
+
+        sentMessage.innerHTML =
+            data.message ||
+            'Your message has been sent. Thank you!';
+
+        sentMessage.classList.add('d-block');
+      }
+      thisForm.reset(); 
+
+  }catch(error){
       const loading = thisForm.querySelector('.loading');
       if (loading) {
         loading.classList.remove("d-block");
       }
       displayError(thisForm, error);
-    });
+    }
   }
 
   function displayError(thisForm, error) {
