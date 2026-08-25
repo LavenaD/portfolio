@@ -2,11 +2,10 @@
 A project for displaying my Curriculum Vitea. It allows the user to download my CV and send me a message using the contact form.
 - **API**: FastAPI endpoint for sending me a message
 - **UI**: To display my CV, see my linked in page and download my CV.
-
-Template Name: iPortfolio
-Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+- **Template Name**: iPortfolio
+- **Template URL**: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+- **Author**: BootstrapMade.com
+- **License**: https://bootstrapmade.com/license/
 
 ## Project Structure
 ```
