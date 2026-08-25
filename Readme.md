@@ -25,8 +25,7 @@ Portfolio/
 
 ### Requirements
 - Python 3.8+
-- Tensorflow
-- Kaggle hub
+- Flask
 - FastAPI & Uvicorn
 
 ### Setup
@@ -65,7 +64,7 @@ Sends a message with Name of the contact, Email and message from the contact to 
 
 
 ## Deployment Links
-- The Fast API is deployed at -(https://portfolio-1-8992.onrender.com)
+- The Fast API is deployed at -(https://portfolio-1-8992.onrender.com/docs)
 - The Flask UI is deployed at -(https://portfolio-k82x.onrender.com/)
 
 ## API Endpoints
@@ -76,8 +75,8 @@ Sends the message
 ```json
 {
   "name": "Your name",
-  "email": "Your email",
-  "message": "Here goes your message",
+  "email": "test@gmail.com",
+  "message": "I'd like to get in touch",
   "subject": "Subject for your email"
 }
 ```
